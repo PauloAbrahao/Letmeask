@@ -1,13 +1,17 @@
 import React from "react";
+import { useAuth } from "../hooks/useAuth";
+
 import illustrationImg from "../assets/illustration.svg";
 import logoImg from "../assets/logo.svg";
-import googleIconImg from "../assets/google-icon.svg";
 import { Button } from "../components/Button";
 import { Link } from "react-router-dom";
 
-import '../styles/auth.scss';
+import "../styles/auth.scss";
+
 
 export function NewRoom() {
+  const { user } = useAuth()
+
   return (
     <div id="page-auth">
       <aside>
@@ -22,7 +26,6 @@ export function NewRoom() {
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
-
           <form>
             <input type="text" placeholder="Nome da sala" />
             <Button type="submit"> Criar sala</Button>
@@ -35,4 +38,4 @@ export function NewRoom() {
       </main>
     </div>
   );
-};
+}
