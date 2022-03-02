@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useContext } from "react";
 
 import illustrationImg from "../assets/illustration.svg";
 import logoImg from "../assets/logo.svg";
@@ -35,10 +34,15 @@ export function Home() {
 
     if (!roomRef.exists()) {
       alert("Room does not exists!");
-      return 
+      return;
     }
 
-    navigate.push(`/rooms/${roomCode}`)
+    if (roomRef.val().endedAt) {
+      alert("Room already closed!");
+      return;
+    }
+
+    navigate.push(`/rooms/${roomCode}`);
   }
 
   return (
